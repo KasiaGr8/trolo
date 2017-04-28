@@ -1,0 +1,16 @@
+<h1>Board nr: <%= @board.id %> </h1>
+
+
+<table>
+  <tr>
+    <td> ID: <%= @board.id %></td>
+  </tr>
+  <tr>
+    <td>Title: <%= @board.title %></td>
+  </tr>
+  <tr>
+    <td> Created at: <%= @board.created_at %></td>
+  </tr>
+</table>
+
+<%= link_to 'Back', boards_path %>
