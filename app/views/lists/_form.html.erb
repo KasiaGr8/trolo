@@ -1,0 +1,6 @@
+<%= form_for [@board, @list] do |f| %>
+  <%= render partial: './shared/errors', locals: { object: @list } %>
+
+  <%= f.text_field :title %>
+  <%= f.submit %>
+<% end %>

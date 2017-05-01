@@ -1,16 +1,31 @@
-<h1>Board nr: <%= @board.id %> </h1>
-
+<h1>Board nr: <%= @board.id %> Lists </h1>
+<br>
 
 <table>
-  <tr>
-    <td> ID: <%= @board.id %></td>
-  </tr>
-  <tr>
-    <td>Title: <%= @board.title %></td>
-  </tr>
-  <tr>
-    <td> Created at: <%= @board.created_at %></td>
-  </tr>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @board.lists.each do |list| %>
+      <tr>
+        <td><%= list.id %></td>
+        <td><%= list.title %></td>
+        <td><%= list.created_at %></td>
+        <td>
+          <%= link_to 'Edit', "/boards/#{@board.id}/lists/#{list.id}/edit" %>
+          <%= link_to 'Delete', "/boards/#{@board.id}/lists/#{list.id}", method: :delete, data: { confirm: "Are you sure?"} %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+  <%= link_to 'Back to Boards', boards_path %>
 </table>
 
+<%= link_to "Add list", new_board_list_path(@board) %> </br>
+<%= @lists %>
 <%= link_to 'Back', boards_path %>

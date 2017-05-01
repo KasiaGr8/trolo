@@ -4,7 +4,6 @@ class BoardsController < ApplicationController
   def index
     @boards = Board.all
   end
-
   def new
     @board = Board.new
   end
@@ -41,9 +40,10 @@ class BoardsController < ApplicationController
 
   private
 
-  def find_board
-    @board = Board.find(params[:id])
-  end
+  # mozna tej metody uzyc do before_action
+  # def find_board
+  #   @board = Board.find(params[:id])
+  # end
 
   def board
     @board ||= Board.find(params[:id])
