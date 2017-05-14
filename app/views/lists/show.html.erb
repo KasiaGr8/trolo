@@ -1,0 +1,33 @@
+<h1>List nr: <%= @list.id %> Tickets </h1>
+
+<br>  
+<%= link_to "Back to Lists", board_path(@board) %> 
+<br>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @list.tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.id %></td>
+        <td><%= ticket.title %></td>
+        <td><%= ticket.status %></td>        
+        <td><%= ticket.created_at %></td>
+        <td><%= link_to 'Edit', edit_list_ticket_path(@list, ticket) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>  
+<%= link_to "Add ticket", new_list_ticket_path(@list) %>
+<br>
+<%= link_to "Back", board_path(@board) %> 
+

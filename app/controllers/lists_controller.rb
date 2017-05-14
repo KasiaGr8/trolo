@@ -26,6 +26,7 @@ class ListsController < ApplicationController
   end 
 
   def show
+    list
   end
 
   def destroy

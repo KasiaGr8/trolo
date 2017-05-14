@@ -16,8 +16,9 @@
         <td><%= list.title %></td>
         <td><%= list.created_at %></td>
         <td>
-          <%= link_to 'Edit', "/boards/#{@board.id}/lists/#{list.id}/edit" %>
-          <%= link_to 'Delete', "/boards/#{@board.id}/lists/#{list.id}", method: :delete, data: { confirm: "Are you sure?"} %>
+          <%= link_to 'Edit', edit_board_list_path(@board, list) %>
+          <%= link_to 'Delete', board_list_path(@board, list), method: :delete, data: { confirm: "Are you sure?"} %>
+          <%= link_to 'Show', board_list_path(@board, list) %>
         </td>
 
       </tr>

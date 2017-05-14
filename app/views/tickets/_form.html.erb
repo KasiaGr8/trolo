@@ -1,0 +1,10 @@
+<%= form_for [@list, @ticket] do |f| %>
+  <%= render partial: './shared/errors', locals: { object: @ticket } %>
+
+  <%= f.text_field :title %>
+
+  <%= 'Status:'%> 
+  <%= f.select :status, Ticket.statuses.map { |key, val| [key.capitalize, key] } %>
+  
+  <%= f.submit %>
+<% end %>
