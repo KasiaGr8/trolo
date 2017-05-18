@@ -2,17 +2,20 @@ class BoardsController < ApplicationController
   # before_action :find_board, only: [:update, :destroy, :show, :edit] # callback, wywoła się przed akcjami w only: ...
 
   def index
-    @boards = Board.all
+    @own_boards = current_user.boards.where(owner_id: current_user.id)
+    @member_boards = current_user.boards.where.not(owner_id: current_user.id)
   end
+
   def new
     @board = Board.new
   end
 
   def create
-    @board = Board.new(board_params)
-    if @board.save
+    service = BoardCreator.new(board_params.merge!(owner_id: current_user.id))
+    if service.save
       redirect_to boards_path
     else
+      @board = service.board
       render :new
     end
   end

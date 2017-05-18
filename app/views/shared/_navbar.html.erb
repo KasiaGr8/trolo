@@ -1,0 +1,7 @@
+<div class='ala-nav'>
+  <% if current_user.present? %>
+    <%= link_to 'Sign Out', session_path(current_user), method: :delete %>
+  <% else %>
+    <%= link_to 'Sign up', new_registration_path %>
+  <% end %>     
+</div>
